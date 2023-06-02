@@ -1,0 +1,7 @@
+.image {
+    position: absolute;
+    width: auto; /* Example width */
+    height: 200px; /* Example height */
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
