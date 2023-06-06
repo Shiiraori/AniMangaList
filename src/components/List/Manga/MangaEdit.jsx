@@ -24,7 +24,7 @@ const MangaEdit =({ manga }) => {
       try {
         const mangaRef = doc(
           db,
-          `users/${auth.currentUser.displayName}/manga`,
+          `users/${auth.currentUser.uid}/manga`,
           manga.id
         );
     
@@ -76,13 +76,13 @@ const MangaEdit =({ manga }) => {
                 <div className="modal-body">
                   <div className="form-group">
                     <label htmlFor="mn" className="form-label">
-                      Manga Name
+                      Name
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="mn"
-                      placeholder="Manga Name"
+                      placeholder="Name"
                       required
                       value={mangaName}
                       onChange={(e) => setMangaName(e.target.value)}
@@ -91,13 +91,13 @@ const MangaEdit =({ manga }) => {
       
                   <div className="form-group">
                     <label htmlFor="md" className="form-label">
-                      Manga Description
+                      Description
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="md"
-                      placeholder="Manga Description"
+                      placeholder="Description"
                       required
                       value={mangaDescription}
                       onChange={(e) => setMangaDescription(e.target.value)}
@@ -106,7 +106,7 @@ const MangaEdit =({ manga }) => {
       
                   <div className="form-group">
                     <label htmlFor="rate" className="form-label">
-                      Rate the Manga
+                      Rate
                     </label>
                     <input
                       type="number"

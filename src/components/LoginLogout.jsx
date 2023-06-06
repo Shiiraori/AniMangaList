@@ -10,8 +10,8 @@ import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginLogout() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("Test@gmail.com");
+    const [password, setPassword] = useState("test123");
     const [isRegistering, setIsRegistering] = useState(false);
     const [registerInformation, setRegisterInformation] = useState({
       email: "",
@@ -42,7 +42,7 @@ export default function LoginLogout() {
     const handleSignIn = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-          navigate("/homepage");
+          navigate("/anime");
         })
         .catch((err) => alert(err.message));
     };

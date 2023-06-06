@@ -23,7 +23,7 @@ const MangaForm = () => {
   const AddManga = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, `users/${auth.currentUser.displayName}/manga`), {
+      await addDoc(collection(db, `users/${auth.currentUser.uid}/manga`), {
         MangaName: mangaName,
         MangaDescription: mangaDescription,
         MangaRating: mangaRating,
@@ -76,31 +76,31 @@ const MangaForm = () => {
             <div className="modal-body">
               <form onSubmit={AddManga}>
                 <div className="form-group">
-                <label htmlFor="mn" className="form-label">Manga Name</label>
+                <label htmlFor="mn" className="form-label">Name</label>
                   <input
                     type="text"
                     className="form-control"
                     id="mn"
-                    placeholder="Manga Name"
+                    placeholder="Name"
                     required
                     value={mangaName}
                     onChange={(e) => setMangaName(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="md" className="form-label">Manga Description</label>
+                  <label htmlFor="md" className="form-label">Description</label>
                   <input
                     type="text"
                     className="form-control"
                     id="md"
-                    placeholder="Manga Description"
+                    placeholder="Description"
                     required
                     value={mangaDescription}
                     onChange={(e) => setMangaDescription(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
-                <label htmlFor="rate" className="form-label">Rate the Manga</label>
+                <label htmlFor="rate" className="form-label">Manga</label>
                   <input
                     type="number"
                     min="1"
@@ -122,6 +122,7 @@ const MangaForm = () => {
                     className="btn btn-danger"
                     data-dismiss="modal"
                     aria-label="Close"
+                    onClick={() => setShowModal(false)}
                   >
                     Close
                   </button>

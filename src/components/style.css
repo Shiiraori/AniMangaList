@@ -1,7 +1,52 @@
 .image {
     position: absolute;
-    width: auto; /* Example width */
+    width: 1000px; /* Example width */
     height: 200px; /* Example height */
     padding-bottom: 10px;
     padding-top: 10px;
+  }
+
+  .image2 {
+    position: absolute;
+    margin-top: 200px;
+    width: 1000px; /* Example width */
+    height: 200px; /* Example height */
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+  }
+
+  .image3 {
+    position: absolute;
+    margin-top: 400px;
+    width: 1000px; /* Example width */
+    height: 200px; /* Example height */
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  @media (max-width: 999px) 
+  {
+    .image {
+      width: auto;
+    }}
+  
+  @media (max-width: 999px) 
+  {
+    .image2 {
+      width: auto;
+    }}
+ 
+  @media (max-width: 999px) 
+   {
+    .image3 {
+      width: auto;
+  }}
+
+  .table {
+    table-layout: fixed;
+  }
+
+  .table td {
+    word-wrap: break-word;
   }

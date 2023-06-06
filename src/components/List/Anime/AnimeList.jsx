@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { db, auth } from '../../../firebase';
-import { useNavigate } from "react-router-dom"; 
-
-
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import {
   collection,
@@ -17,7 +15,7 @@ import {
   query
 } from "firebase/firestore";
 
-//component edit
+// component edit
 import AnimeEdit from './AnimeEdit';
 
 const AnimeList = () => {
@@ -30,14 +28,12 @@ const AnimeList = () => {
         // read
         const unsubscribe = onSnapshot(
           query(
-          collection(db, `users/${auth.currentUser.displayName}/anime`),
-          orderBy("date", "desc")),
+            collection(db, `users/${auth.currentUser.uid}/anime`),
+            orderBy("date", "desc")),
           (snapshot) => {
-            setAnime(
-              snapshot.docs.map((doc) => {
-                return { id: doc.id, ...doc.data() };
-              })
-            );
+            setAnime(snapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() };
+            }));
           }
         );
 
@@ -48,28 +44,25 @@ const AnimeList = () => {
     });
   }, []);
 
-    // delete a anime using the firebase.delete function
-    const handleDelete = async (id) => {
-      try {
-        await deleteDoc(doc(db, `users/${auth.currentUser.displayName}/anime`, id));
-        toast.success("Anime deleted successfully")
-      } 
-      
+  // delete a anime using the firebase.delete function
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, `users/${auth.currentUser.uid}/anime`, id));
+      toast.success("Anime deleted successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      catch (error) {
-        console.log(error);
-      }
-    };
-  
-
-    return (
+  return (
+    <div>
       <div className="d-flex justify-content-center">
-        <table className="table table-striped">
-          <thead>
+        <table className="table table-striped table-bordered table-dark">
+          <thead className="">
             <tr className="text-center">
-              <th>Anime Name</th>
-              <th>Anime Description</th>
-              <th>Anime Rating</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Rating</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -77,10 +70,9 @@ const AnimeList = () => {
             {anime.map((anime) => (
               <tr key={anime.id}>
                 <td>{anime.AnimeName}</td>
-                <td>{anime.AnimeDescription}</td>
+                <td className="text-wrap">{anime.AnimeDescription}</td>
                 <td>{anime.AnimeRating}</td>
                 <td>
-                  
                   <div className="d-flex justify-content-center">
                     <AnimeEdit anime={anime} />
                     <button
@@ -96,8 +88,8 @@ const AnimeList = () => {
           </tbody>
         </table>
       </div>
-    );
-    
+    </div>
+  );
 };
 
 export default AnimeList;

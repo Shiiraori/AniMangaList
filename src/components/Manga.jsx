@@ -3,7 +3,7 @@ import MangaForm from './List/Manga/MangaForm';
 import MangaList from './List/Manga/MangaList';
 import CustomNav from './CustomNav/CustomNav';
 
-export default function Homepage() {
+export default function Manga() {
   return (
     <div className="container-fluid">
       <div style={{ display: 'flex' }} className="row">

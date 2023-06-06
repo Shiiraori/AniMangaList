@@ -6,11 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./components/style.css/"
 
 import LoginLogout from "./components/LoginLogout";
-import Homepage from "./components/Homepage";
 import DataVisual from "./components/DataVisual";
 import Anime from "./components/Anime"
 import Manga from "./components/Manga"
 import Novel from "./components/Novel"
+import Dashboard from "./components/Dashboard";
+
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginLogout />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/anime" element={<Anime />} />
           <Route path="/manga" element={<Manga />} />"
           <Route path="/Light Novel" element={<Novel />} />

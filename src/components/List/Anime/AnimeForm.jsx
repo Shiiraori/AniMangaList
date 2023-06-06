@@ -23,7 +23,7 @@ const AnimeForm = () => {
   const AddAnime = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, `users/${auth.currentUser.displayName}/anime`), {
+      await addDoc(collection(db, `users/${auth.currentUser.uid}/anime`), {
         AnimeName: animeName,
         AnimeDescription: animeDescription,
         AnimeRating: animeRating,
@@ -44,12 +44,14 @@ const AnimeForm = () => {
     <div>
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary d-flex"
         onClick={() => setShowModal(true)}
       >
         Add Anime
       </button>
-  
+      <div className="text-center d-flex justify-content-center align-items-center">
+        <h4>Anime List</h4>
+      </div>
       <div
         className={`modal ${showModal ? "show" : ""}`}
         tabIndex="-1"
@@ -76,19 +78,19 @@ const AnimeForm = () => {
             <div className="modal-body">
               <form onSubmit={AddAnime}>
                 <div className="form-group">
-                <label htmlFor="mn" className="form-label">Anime Name</label>
+                <label htmlFor="mn" className="form-label">Name</label>
                   <input
                     type="text"
                     className="form-control"
                     id="mn"
-                    placeholder="Anime Name"
+                    placeholder="Anime"
                     required
                     value={animeName}
                     onChange={(e) => setAnimeName(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="md" className="form-label">Anime Description</label>
+                  <label htmlFor="md" className="form-label">Description</label>
                   <input
                     type="text"
                     className="form-control"
@@ -100,7 +102,7 @@ const AnimeForm = () => {
                   />
                 </div>
                 <div className="form-group">
-                <label htmlFor="rate" className="form-label">Rate the Anime</label>
+                <label htmlFor="rate" className="form-label">Rate</label>
                   <input
                     type="number"
                     min="1"
@@ -122,6 +124,7 @@ const AnimeForm = () => {
                     className="btn btn-danger"
                     data-dismiss="modal"
                     aria-label="Close"
+                    onClick={() => setShowModal(false)}
                   >
                     Close
                   </button>

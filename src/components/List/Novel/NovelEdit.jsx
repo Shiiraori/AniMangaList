@@ -24,7 +24,7 @@ const NovelEdit =({ novel }) => {
       try {
         const novelRef = doc(
           db,
-          `users/${auth.currentUser.displayName}/novel`,
+          `users/${auth.currentUser.uid}/novel`,
           novel.id
         );
     
@@ -76,7 +76,7 @@ const NovelEdit =({ novel }) => {
                 <div className="modal-body">
                   <div className="form-group">
                     <label htmlFor="mn" className="form-label">
-                      Novel Name
+                      Name
                     </label>
                     <input
                       type="text"
@@ -91,13 +91,13 @@ const NovelEdit =({ novel }) => {
       
                   <div className="form-group">
                     <label htmlFor="md" className="form-label">
-                      Novel Description
+                      Description
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="md"
-                      placeholder="Novel Description"
+                      placeholder="Description"
                       required
                       value={novelDescription}
                       onChange={(e) => setNovelDescription(e.target.value)}
@@ -106,7 +106,7 @@ const NovelEdit =({ novel }) => {
       
                   <div className="form-group">
                     <label htmlFor="rate" className="form-label">
-                      Rate the Novel
+                      Rate
                     </label>
                     <input
                       type="number"

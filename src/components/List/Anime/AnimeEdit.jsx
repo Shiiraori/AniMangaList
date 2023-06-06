@@ -24,7 +24,7 @@ const AnimeEdit =({ anime }) => {
       try {
         const animeRef = doc(
           db,
-          `users/${auth.currentUser.displayName}/anime`,
+          `users/${auth.currentUser.uid}/anime`,
           anime.id
         );
     
@@ -76,13 +76,13 @@ const AnimeEdit =({ anime }) => {
                 <div className="modal-body">
                   <div className="form-group">
                     <label htmlFor="mn" className="form-label">
-                      Anime Name
+                      Name
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="mn"
-                      placeholder="Anime Name"
+                      placeholder="Name"
                       required
                       value={animeName}
                       onChange={(e) => setAnimeName(e.target.value)}
@@ -91,13 +91,13 @@ const AnimeEdit =({ anime }) => {
       
                   <div className="form-group">
                     <label htmlFor="md" className="form-label">
-                      Anime Description
+                      Description
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="md"
-                      placeholder="Anime Description"
+                      placeholder="Description"
                       required
                       value={animeDescription}
                       onChange={(e) => setAnimeDescription(e.target.value)}
@@ -106,7 +106,7 @@ const AnimeEdit =({ anime }) => {
       
                   <div className="form-group">
                     <label htmlFor="rate" className="form-label">
-                      Rate the Anime
+                      Anime
                     </label>
                     <input
                       type="number"

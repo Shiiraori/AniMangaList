@@ -23,7 +23,7 @@ const NovelForm = () => {
   const AddNovel = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, `users/${auth.currentUser.displayName}/novel`), {
+      await addDoc(collection(db, `users/${auth.currentUser.uid}/novel`), {
         NovelName: novelName,
         NovelDescription: novelDescription,
         NovelRating: novelRating,
@@ -76,31 +76,31 @@ const NovelForm = () => {
             <div className="modal-body">
               <form onSubmit={AddNovel}>
                 <div className="form-group">
-                <label htmlFor="mn" className="form-label">Novel Name</label>
+                <label htmlFor="mn" className="form-label">Name</label>
                   <input
                     type="text"
                     className="form-control"
                     id="mn"
-                    placeholder="Novel Name"
+                    placeholder="Name"
                     required
                     value={novelName}
                     onChange={(e) => setNovelName(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="md" className="form-label">Novel Description</label>
+                  <label htmlFor="md" className="form-label">Description</label>
                   <input
                     type="text"
                     className="form-control"
                     id="md"
-                    placeholder="Novel Description"
+                    placeholder="Description"
                     required
                     value={novelDescription}
                     onChange={(e) => setNovelDescription(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
-                <label htmlFor="rate" className="form-label">Rate the Novel</label>
+                <label htmlFor="rate" className="form-label">Novel</label>
                   <input
                     type="number"
                     min="1"
@@ -122,6 +122,7 @@ const NovelForm = () => {
                     className="btn btn-danger"
                     data-dismiss="modal"
                     aria-label="Close"
+                    onClick={() => setShowModal(false)}
                   >
                     Close
                   </button>

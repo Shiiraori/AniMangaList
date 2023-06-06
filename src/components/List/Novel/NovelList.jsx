@@ -29,7 +29,7 @@ const NovelList = () => {
         // read
         const unsubscribe = onSnapshot(
           query(
-          collection(db, `users/${auth.currentUser.displayName}/novel`),
+          collection(db, `users/${auth.currentUser.uid}/novel`),
           orderBy("date", "desc")),
           (snapshot) => {
             setNovel(
@@ -63,12 +63,12 @@ const NovelList = () => {
 
     return (
       <div className="d-flex justify-content-center">
-        <table className="table table-striped">
-          <thead>
+        <table className="table table-striped table-bordered table-dark">
+          <thead className="">
             <tr className="text-center">
-              <th>Novel Name</th>
-              <th>Novel Description</th>
-              <th>Novel Rating</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Rating</th>
               <th>Actions</th>
             </tr>
           </thead>

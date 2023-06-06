@@ -3,7 +3,7 @@ import NovelForm from './List/Novel/NovelForm';
 import NovelList from './List/Novel/NovelList';
 import CustomNav from './CustomNav/CustomNav';
 
-export default function Homepage() {
+export default function Novel() {
   return (
     <div className="container-fluid">
       <div style={{ display: 'flex' }} className="row">

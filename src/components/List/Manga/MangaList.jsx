@@ -28,7 +28,7 @@ const MangaList = () => {
         // read
         const unsubscribe = onSnapshot(
           query(
-          collection(db, `users/${auth.currentUser.displayName}/manga`),
+          collection(db, `users/${auth.currentUser.uid}/manga`),
           orderBy("date", "desc")),
           (snapshot) => {
             setManga(
@@ -49,7 +49,7 @@ const MangaList = () => {
     // delete a manga using the firebase.delete function
     const handleDelete = async (id) => {
       try {
-        await deleteDoc(doc(db, `users/${auth.currentUser.displayName}/manga`, id));
+        await deleteDoc(doc(db, `users/${auth.currentUser.uid}/manga`, id));
         toast.success("Manga deleted successfully")
       } 
       
@@ -62,12 +62,12 @@ const MangaList = () => {
 
     return (
       <div className="d-flex justify-content-center">
-        <table className="table table-striped">
-          <thead>
+        <table className="table table-striped table-bordered table-dark">
+          <thead className="">
             <tr className="text-center">
-              <th>Manga Name</th>
-              <th>Manga Description</th>
-              <th>Manga Rating</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Rating</th>
               <th>Actions</th>
             </tr>
           </thead>
